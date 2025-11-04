@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Royal Auri Gold – Premium 24K Jewelry</title>
+  <meta name="description" content="Royal Auri Gold – Abuja's premium gold and jewelry house. 24K jewelry, diamonds, custom pieces, luxury watches. Africa & diaspora." />
+  <style>
+    :root{
+      --gold:#D4AF37;
+      --gold-dark:#b4892a;
+      --ink:#0b0b0b;
+      --cream:#ffffff;
+      --shadow:0 10px 25px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;scroll-behavior:smooth;background:#fff;color:#111}
+    body{font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;}
+    /* Subtle gold particle background for depth */
+    body::before{
+      content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
+      background-image: radial-gradient(circle at 20% 20%, rgba(212,175,55,.25) 0 2px, transparent 2px),
+                        radial-gradient(circle at 70% 40%, rgba(212,175,55,.18) 0 2px, transparent 2px);
+      background-size: 120px 120px, 140px 140px;
+      filter: saturate(1.1);
+    }
+    a{color:inherit;text-decoration:none}
+
+    /* Layout helpers */
+    .container{width:100%;max-width:1180px;margin:0 auto;padding:0 20px}
+    .section{padding:72px 0}
+
+    /* NAVBAR */
+    .navbar{display:flex;align-items:center;justify-content:space-between;padding:18px 0;position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:saturate(1.2) blur(6px);z-index:50;border-bottom:1px solid #f0e6c4}
+    .brand{font-family: Georgia, "Times New Roman", serif;font-weight:700;letter-spacing:.5px}
+    .brand .crest{color:var(--gold);font-variant-numeric:tabular-nums}
+    .nav-actions{display:flex;gap:12px;align-items:center}
+    .nav-item{border:1px solid #e6d9a7;background:#fff;color:#1a1a1a;padding:10px 14px;border-radius:999px;font-weight:600;cursor:default;opacity:.9}
+    .menu-toggle{display:none;border:none;background:transparent;cursor:pointer}
+
+    /* HERO */
+    .hero{height: min(78vh, 740px);min-height:520px; display:grid; place-items:center; text-align:center; position:relative; color:white; overflow:hidden;
+      background-size:cover;background-position:center;}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.0) 40%, rgba(0,0,0,.25));}
+    .hero-content{position:relative;z-index:1; padding:0 20px 20px;max-width:900px}
+    .hero h1{font-family: Georgia, 'Times New Roman', serif; font-size: clamp(2rem, 4vw + 1rem, 4rem); margin:12px 0 8px; color:#f8f1d9; text-shadow:0 2px 10px rgba(0,0,0,.4)}
+    .hero p{font-size:clamp(.95rem, 1.2vw + .8rem, 1.25rem); color:#f7f0d9; opacity:.95}
+    .cta-row{display:flex;gap:14px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+    .btn{border:none;background:#fff0;border-radius:999px;padding:12px 20px;font-weight:700;cursor:default;letter-spacing:.4px}
+    .btn.primary{background:var(--gold); color:#1a1a1a; box-shadow:0 6px 18px rgba(212,175,55,.5);}
+    .btn.secondary{background:#fff; color:#1a1a1a; border:1px solid #f0d29a;}
+
+    /* FLOATING WHATSAPP BUTTON ( Africa region ) */
+    .float-whatsapp{position:fixed; right:24px; bottom:24px; width:64px; height:64px; border-radius:50%; display:grid; place-items:center; background:#25D366; box-shadow:0 8px 20px rgba(0,0,0,.25); z-index:60}
+    .float-whatsapp svg{width:28px;height:28px; fill:white}
+
+    /* SECTIONS */
+    h2{font-family: Georgia, 'Times New Roman', serif; font-size: clamp(1.6rem, 2.5vw + 1rem, 2.6rem); margin:0 0 12px}
+    .section-header{text-align:center; margin-bottom:24px; color:#1a1a1a}
+    .lead{text-align:center; color:#555; max-width:720px; margin:0 auto 28px}
+
+    /* GRID: PRODUCTS */
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px}
+    .card{background:#fff;border-radius:14px;box-shadow:var(--shadow);overflow:hidden;border:1px solid #f0e8d9}
+    .card-img{width:100%;height:210px;object-fit:cover; display:block}
+    .card-body{padding:16px}
+    .card-title{font-weight:700;font-family: Georgia, 'Times New Roman', serif;margin:0 0 6px}
+    .card-text{color:#555; font-size:14px; line-height:1.5; margin-bottom:12px}
+    .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .link{font-weight:600;font-size:13px; padding:9px 12px; border-radius:999px; border:1px solid #f0d29a; color:#1a1a1a; background:#fff;}
+
+    /* ABOUT */
+    .about{display:grid; grid-template-columns: 1.1fr 0.9fr; gap:28px; align-items:center}
+    .about-desc{font-size:15.8px; line-height:1.75; color:#333}
+    .about-img{width:100%; height:340px; object-fit:cover; border-radius:12px; border:1px solid #f0e8d9}
+
+    /* TESTIMONIALS */
+    .testimonials{display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:22px}
+    .quote{font-size:15px; color:#444; background:#fff; padding:18px; border-radius:12px; border:1px solid #f0e8d9; min-height:120px}
+    .stars{color:#f2b01e; margin-bottom:8px}
+    .avatar{width:40px; height:40px; border-radius:50%; object-fit:cover; margin-right:8px; display:inline-block; vertical-align:middle}
+
+    /* HIGHLIGHTS */
+    .highlights{display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:stretch}
+    .highlight{display:flex; gap:14px; align-items:center; padding:18px; border-radius:12px; border:1px solid #f0e8d9; background:#fff}
+    .icon{width:34px;height:34px; border-radius:8px; display:grid; place-items:center; background:var(--gold); color:#1a1a1a; font-weight:700;}
+
+    /* FOOTER */
+    footer{border-top:1px solid #f0e8d9; padding:28px 0; color:#555;}
+    .footer-grid{display:grid; grid-template-columns: 1fr 1fr; gap:20px; align-items:start}
+    .social{display:flex; gap:12px; align-items:center}
+    .social a{width:28px; height:28px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; background:#f4f0e0; color:#333; border:1px solid #e2d6a6}
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px){
+      .about{grid-template-columns:1fr;}
+      .highlights{grid-template-columns:1fr 1fr;}
+    }
+    @media (max-width: 768px){
+      .nav-item{display:none}
+      .menu-toggle{display:inline-block}
+      .hero{height:60vh}
+      .about{grid-template-columns:1fr}
+      .highlights{grid-template-columns:1fr}
+      .testimonials{grid-template-columns:1fr}
+      .card-img{height:190px}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar" aria-label="Main navigation">
+    <div class="container" style="display:flex;align-items:center;gap:12px;justify-content:space-between;">
+      <div class="brand" aria-label="Royal Auri Gold">
+        Royal <span class="crest" style="color:var(--gold);">Auri</span> Gold
+      </div>
+      <nav class="nav-actions" aria-label="Site navigation">
+        <!-- Non-functional placeholders -->
+        <button class="nav-item" aria-label="Home">Home</button>
+        <button class="nav-item" aria-label="Collections">Collections</button>
+        <button class="nav-item" aria-label="About">About</button>
+        <button class="nav-item" aria-label="Testimonials">Testimonials</button>
+        <button class="nav-item" aria-label="Contact">Contact</button>
+        <button class="menu-toggle" aria-label="Menu">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" style="background-image:url('https://im.runware.ai/image/ws/2/ii/6d4f3b18-c30b-4c8d-8a23-94c3fae1b662.jpg');" aria-label="Hero with model wearing 24K gold jewelry">
+    <div class="hero-content container">
+      <h1>Royal Auri Gold</h1>
+      <p>24K luxury jewelry, diamond engagement rings, custom pieces, and luxury watches crafted in Abuja for Africa and the diaspora.</p>
+      <div class="cta-row" aria-label="Hero CTAs">
+        <button class="btn primary" type="button">Shop Now</button>
+        <button class="btn secondary" type="button">Book a Private Viewing</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOATING WhatsApp Button (Africa) -->
+  <a href="https://wa.me/2347012345678" class="float-whatsapp" aria-label="Chat on WhatsApp" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-label="WhatsApp icon"><path d="M20.5 3.5a11.6 11.6 0 0 0-16.4 0C1 8.6 3.2 14 7.8 16.7l-.7 2.9 3-1.4a11.6 11.6 0 0 0-2.1-3.9C5.6 11.6 4 9.2 4 9.2s-1.9 4.4 3 7.7c4.9 3.2 9.9-1 9.9-1s1.3-9-2.6-12.5z" fill="currentColor"/></svg>
+  </a>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- Highlight: Free Nigeria delivery & Worldwide shipping -->
+    <section class="section" aria-label="Delivery highlights">
+      <div class="container highlights" style="gap:28px;">
+        <div class="highlight" style="flex:1;min-width:260px;">
+          <div class="icon">🚚</div>
+          <div>
+            <strong>Free Delivery</strong>
+            <div style="font-size:14px;color:#555;">Within Nigeria on orders over ₦50,000</div>
+          </div>
+        </div>
+        <div class="highlight" style="flex:1;min-width:260px;">
+          <div class="icon">🌍</div>
+          <div>
+            <strong>Worldwide Shipping</strong>
+            <div style="font-size:14px;color:#555;">Global delivery to all major cities and diasporas</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT SHOWCASE -->
+    <section class="section" aria-label="Product showcase">
+      <div class="container section-header">
+        <h2>Exclusive Collections</h2>
+        <p class="lead">Rings, Necklaces, Watches, Custom Pieces, and Accessories crafted with authentic 24-karat gold, diamonds, and Nigerian heritage style.</p>
+      </div>
+      <div class="container grid" id="product-grid">
+        <!-- Rings -->
+        <article class="card" aria-label="Rings">
+          <img class="card-img" src="https://im.runware.ai/image/ws/2/ii/ddcea195-a11c-43d5-889b-6b99fffce478.jpg" alt="Rings collection"/>
+          <div class="card-body">
+            <h3 class="card-title">Rings</h3>
+            <p class="card-text">Timeless 24K gold rings with diamonds and intricate detailing inspired by African regalia.</p>
+            <div class="card-actions">
+              <button class="btn" type="button" aria-label="Shop Now Rings">Shop Now</button>
+              <a class="link" href="https://wa.me/2347012345678" target="_blank" rel="noopener" aria-label="Chat on WhatsApp about Rings">Chat on WhatsApp</a>
+            </div>
+          </div>
+        </article>
+        <!-- Necklaces -->
+        <article class="card" aria-label="Necklaces">
+          <img class="card-img" src="https://im.runware.ai/image/ws/2/ii/7cf3e39c-8dfe-4b45-bfa0-7437606fcb1f.jpg" alt="Necklaces collection"/>
+          <div class="card-body">
+            <h3 class="card-title">Necklaces</h3>
+            <p class="card-text">24K gold necklaces and pendants with subtle diamond accents; crafted to drape with royal elegance.</p>
+            <div class="card-actions">
+              <button class="btn" type="button" aria-label="Shop Now Necklaces">Shop Now</button>
+              <a class="link" href="https://wa.me/2347012345678" target="_blank" rel="noopener" aria-label="Chat on WhatsApp about Necklaces">Chat on WhatsApp</a>
+            </div>
+          </div>
+        </article>
+        <!-- Watches -->
+        <article class="card" aria-label="Watches">
+          <img class="card-img" src="https://im.runware.ai/image/ws/2/ii/7052a0f5-513c-4e5c-9c3b-c5b3a2c05f3b.jpg" alt="Watches collection"/>
+          <div class="card-body">
+            <h3 class="card-title">Watches</h3>
+            <p class="card-text">Statement timepieces combining precision, luxury, and African-inspired design motifs.</p>
+            <div class="card-actions">
+              <button class="btn" type="button" aria-label="Shop Now Watches">Shop Now</button>
+              <a class="link" href="https://wa.me/2347012345678" target="_blank" rel="noopener" aria-label="Chat on WhatsApp about Watches">Chat on WhatsApp</a>
+            </div>
+          </div>
+        </article>
+        <!-- Custom Pieces -->
+        <article class="card" aria-label="Custom Pieces">
+          <img class="card-img" src="https://im.runware.ai/image/ws/2/ii/7160de98-cc58-4573-82ac-e062d13e78c5.jpg" alt="Custom pieces"/>
+          <div class="card-body">
+            <h3 class="card-title">Custom Pieces</h3>
+            <p class="card-text">Collaborate with our master goldsmith to design heirloom-worthy pieces tailored to your story.</p>
+            <div class="card-actions">
+              <button class="btn" type="button" aria-label="Shop Now Custom Pieces">Shop Now</button>
+              <a class="link" href="https://wa.me/2347012345678" target="_blank" rel="noopener" aria-label="Chat on WhatsApp about Custom Pieces">Chat on WhatsApp</a>
+            </div>
+          </div>
+        </article>
+        <!-- Accessories -->
+        <article class="card" aria-label="Accessories">
+          <img class="card-img" src="https://im.runware.ai/image/ws/2/ii/7160de98-cc58-4573-82ac-e062d13e78c5.jpg" alt="Accessories"/>
+          <div class="card-body">
+            <h3 class="card-title">Accessories</h3>
+            <p class="card-text">Elegant bracelets, pendants, and cuffs that complete any regal wardrobe.</p>
+            <div class="card-actions">
+              <button class="btn" type="button" aria-label="Shop Now Accessories">Shop Now</button>
+              <a class="link" href="https://wa.me/2347012345678" target="_blank" rel="noopener" aria-label="Chat on WhatsApp about Accessories">Chat on WhatsApp</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" aria-label="About Royal Auri Gold">
+      <div class="container about">
+        <div>
+          <h2>Heritage & Craftsmanship</h2>
+          <p class="about-desc">Royal Auri Gold is rooted in Abuja’s royal crafts tradition, blending time-honored goldsmith skills with modern luxury standards. Every piece is a testament to authenticity, integrity, and meticulous attention to detail — from the selection of ethically sourced gold to the final polish reflecting Nigerian pride on a global stage.</p>
+        </div>
+        <img class="about-img" src="https://im.runware.ai/image/ws/2/ii/e24602f7-36b6-468f-b79b-6768d1cbba21.jpg" alt="Goldsmith workshop with artisans working on 24K pieces"/>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section" aria-label="Customer reviews">
+      <div class="container section-header">
+        <h2>Rave Reviews from Abuja</h2>
+        <p class="lead">Three delighted clients share their experiences with Royal Auri Gold.</p>
+      </div>
+      <div class="container testimonials">
+        <blockquote class="quote" aria-label="Testimonial 1">
+          <div class="stars" aria-label="Rating">★★★★★</div>
+          <p>Royal Auri Gold is the definition of elegance. Their craftsmanship is unmatched.</p>
+          <div style="margin-top:6px; font-weight:600; color:#333; display:flex; align-items:center;"><span class="avatar" style="background:url('https://im.runware.ai/image/ws/2/ii/3fa10896-bc43-4749-a573-5eba159058b9.jpg') center/cover;"></span> Queen E.</div>
+        </blockquote>
+        <blockquote class="quote" aria-label="Testimonial 2">
+          <div class="stars" aria-label="Rating">★★★★★</div>
+          <p>I bought my engagement ring here — it’s stunning and timeless.</p>
+          <div style="margin-top:6px; font-weight:600; color:#333; display:flex; align-items:center;"><span class="avatar" style="background:url('https://im.runware.ai/image/ws/2/ii/cfa34a4b-6c7c-41a5-8e30-835c809c0cb2.jpg') center/cover;"></span> Chukwuemeka D.</div>
+        </blockquote>
+        <blockquote class="quote" aria-label="Testimonial 3">
+          <div class="stars" aria-label="Rating">★★★★★</div>
+          <p>Every piece shines with class. Worth every naira.</p>
+          <div style="margin-top:6px; font-weight:600; color:#333; display:flex; align-items:center;"><span class="avatar" style="background:url('https://im.runware.ai/image/ws/2/ii/6d4f3b18-c30b-4c8d-8a23-94c3fae1b662.jpg') center/cover;"></span> Amina K.</div>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" aria-label="Call to action">
+      <div class="container" style="text-align:center;">
+        <h2>Begin your Royal journey</h2>
+        <p class="lead" style="max-width:720px;margin:0 auto 20px;">Discover the finest 24K jewelry and experience Nigeria’s royal craftsmanship with global standards.</p>
+        <div class="cta-row" style="justify-content:center;">
+          <button class="btn primary" type="button" aria-label="Shop Now final">Shop Now</button>
+          <a class="link" href="https://wa.me/2347012345678" target="_blank" rel="noopener" aria-label="Chat on WhatsApp to schedule viewing">Chat on WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="section" aria-label="Footer">
+    <div class="container footer-grid">
+      <div>
+        <p style="margin:0 0 6px;"><strong>Royal Auri Gold</strong></p>
+        <p style="margin:0; font-size:14px; color:#666;">Abuja, Nigeria • Delivery worldwide • info@royalaurigold.ng</p>
+      </div>
+      <div>
+        <div class="social" aria-label="Social media">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Facebook">FB</a>
+          <a href="#" aria-label="TikTok">TT</a>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="text-align:center; margin-top:14px; font-size:13px; color:#777;">
+      made with ❤️ by adorrable.dev
+    </div>
+  </footer>
+
+  <!-- Optional: lightweight JS to enhance UX (no navigation, purely aesthetic) -->
+  <script>
+    // Simple responsive nav placeholder: toggle visibility of nav items on small screens
+    const toggle = document.querySelector('.menu-toggle');
+    const navItems = document.querySelectorAll('.nav-item');
+    if(toggle){
+      toggle.addEventListener('click', ()=>{
+        const isHidden = Array.from(navItems).every(n => n.style.display === 'none' || n.style.display === '');
+        navItems.forEach(n => n.style.display = isHidden ? 'inline-block' : 'none');
+      });
+    }
+  </script>
+</body>
+</html>
